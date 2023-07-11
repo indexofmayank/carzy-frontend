@@ -1,0 +1,160 @@
+$falcon-body-bg: #edf2f9;
+$falcon-input-border-color: #d8e2ef;
+$falcon-input-color:#344050;
+$falcon-input-bg:#fff;
+$falcon-input-focus-border-color: #96bdf2;
+$falcon-box-shadow-inset: inset 0 1px 2px rgba(0,0,0,0.075);
+$falcon-orange-button:#fd6420;
+$falcon-border-color: #d8e2ef;
+$falcon-link-color:#2c7be5;
+$falcon-divider-content-bg:#fff;
+$falcon-headings-color: #344050;
+$falcon-card-cap-color: $falcon-headings-color;
+$falcon-card-border-color: rgba(0,0,0,0.125);
+$falcon-navbar-vertical-default-link-color: #5e6e82;
+$falcon-body-color : #5e6e82;
+$falcon-card-cap-bg: transparent;
+$falcon-box-shadow: 0 7px 14px 0 rgba(65,69,88,0.1),0 3px 6px 0 rgba(0,0,0,0.07);
+$falcon-card-inner-border-radius: 0.375rem;
+$falcon-card-cap-padding-y: 1rem;
+$falcon-card-cap-padding-x: 1.25rem;
+$falcon-gray-700-rgb:94,110,130;
+$falcon-card-border-width:0px;
+$falcon-form-label-font: 0.875rem;
+$falcon-form-letter-spacing:  0.02em;
+.btn-orange{
+    background: $falcon-orange-button;
+    border-color: $falcon-orange-button;
+    &:hover{
+        background: darken($falcon-orange-button, 10%);
+        border-color: darken($falcon-orange-button, 10%);
+    }
+}
+
+.input-group{
+    .input-group-icon{
+        border: 1px solid $falcon-input-border-color;
+    }
+    input{
+        border: 1px solid $falcon-input-border-color;
+    }
+    .form-control:focus{
+        color: $falcon-input-color;
+        background-color: $falcon-input-bg;
+        border-color: $falcon-input-focus-border-color;
+        outline: 0;
+        box-shadow: $falcon-box-shadow-inset,0 0 0 0.25rem rgba(44,123,229,.25);
+    }
+    
+}
+.d-flex{
+    display: flex;
+}
+.flex-center{
+    align-items: center;
+    justify-content: center;
+}
+a {
+    color: $falcon-link-color;
+    text-decoration: none;
+}
+.position-relative{
+    position: relative;
+}
+.fs--1 {
+    font-size: .8333333333rem !important;
+}
+.form-check-label {
+    line-height: 1.45rem;
+}
+.h-100 {
+    height: 100% !important;
+}
+label{
+    font-weight: 500;
+}
+
+// Card Layout 
+
+.card-header:first-child {
+    border-radius: $falcon-card-inner-border-radius $falcon-card-inner-border-radius 0 0;
+}
+.card-header {
+    padding: $falcon-card-cap-padding-y $falcon-card-cap-padding-x;
+    margin-bottom: 0;
+    color: $falcon-card-cap-color;
+    background-color: $falcon-card-cap-bg;
+    border-bottom: $falcon-card-border-width solid $falcon-card-border-color;
+}
+.bg-light {
+    background-color: #f9fafd !important;
+}
+.cr-card-shadow{
+    box-shadow: $falcon-box-shadow;
+}
+.card{
+    @extend .cr-card-shadow;
+    background-color: #fff;
+    border: 1px solid #f0f0f0;
+}
+.card-body:last-child {
+    border-bottom-left-radius: 0.375rem;
+    border-bottom-right-radius: 0.375rem;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 0.3125rem 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: $falcon-input-color;
+    background-color: $falcon-input-bg;
+    background-clip: padding-box;
+    border: 1px solid $falcon-input-border-color;
+    appearance: none;
+    border-radius: 0.25rem;
+    box-shadow: $falcon-box-shadow-inset;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    &:focus{
+        color: $falcon-input-color;
+        background-color: $falcon-input-bg;
+        border-color: $falcon-input-focus-border-color;
+        outline: 0;
+        box-shadow: $falcon-box-shadow-inset,0 0 0 0.25rem rgba(44,123,229,.25);
+    }
+}
+.form-label{
+    font-size: $falcon-form-label-font;
+    letter-spacing: 0.02em;
+}
+.transparnt-btn{
+    background: none;
+    border: none;
+    color: $falcon-input-color;
+    &:hover{
+        color: $falcon-input-color;
+        background: none;
+        background-color: none;
+    }
+    &.show{
+        color: $falcon-input-color;
+        background: none;
+        background-color: none;
+    }
+    &:first-child:active{
+        color: $falcon-input-color;
+        background: none;
+        background-color: none;
+    }
+    &:active{
+        color: $falcon-input-color;
+        background: none;
+        background-color: none;
+    } &:focus{
+        color: $falcon-input-color;
+        background: none;
+        background-color: none;
+    }
+}
