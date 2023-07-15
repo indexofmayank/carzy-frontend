@@ -4,7 +4,7 @@ import * as Yup from "yup";
 
 const validationSchema = Yup.object({
   email: Yup.string().email().required("email is required"),
-  password: Yup.string().min(6).max(16).required(),
+  password: Yup.string().min(6, "must be greater than 6").max(16),
 });
 
 const FormikDemo = () => {
