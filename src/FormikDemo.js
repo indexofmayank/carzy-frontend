@@ -1,4 +1,5 @@
 import { Formik, useFormik, Form, Field, ErrorMessage } from "formik";
+import { useMemo } from "react";
 import * as Yup from "yup";
 
 const validationSchema = Yup.object({
@@ -18,18 +19,25 @@ const FormikDemo = () => {
   }
 
   return (
-    <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-      <Form>
-        <div>
-          <Field type="text" name="email" />
-          <ErrorMessage name='email' />
-        </div>
-        <div>
-          <Field type="password" name="password" />
-          <ErrorMessage name="password" />
-        </div>
-        <button type="submit">Submit</button>
-      </Form>
+    <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit} validateOnChange={false}>
+      {
+        (formik) => {
+          console.log(formik);
+          return (
+            <Form>
+              <div>
+                <Field type="text" name="email" placeholder="Email" />
+                <ErrorMessage name='email' />
+              </div>
+              <div>
+                <Field type="password" name="password" placeholder="Password" />
+                <ErrorMessage name="password" />
+              </div>
+              <button type="submit">Submit</button>
+            </Form>
+          )
+        }
+      }
     </Formik>
   );
 }

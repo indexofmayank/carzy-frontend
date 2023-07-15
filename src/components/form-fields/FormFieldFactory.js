@@ -1,8 +1,8 @@
 import fieldTypes from "../../constants/FieldType";
-import PasswordField from "./PasswordField";
 import TextField from "./TextField";
+import PasswordField from "./PasswordField";
 
-const FormFieldBuilder = (field) => {
+const FormFieldFactory = (field) => {
 
   const type = field.type;
   let jsx;
@@ -23,4 +23,4 @@ const FormFieldBuilder = (field) => {
   return jsx;
 }
 
-export default FormFieldBuilder;
+export default FormFieldFactory;

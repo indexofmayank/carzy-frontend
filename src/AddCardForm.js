@@ -1,11 +1,10 @@
-import FormControl from "./components/formfieldbuilder/FormControl";
-
+import FormControl from "./components/form-builder/FormControl";
 
 const AddCardForm = () => {
 
   const formDetails = {
-    "name": "add_car",
-    "label": "Add My Car",
+    "name": "brand",
+    "label": "Brand",
     "fields": [
       {
         "type": "text",
@@ -59,7 +58,7 @@ const AddCardForm = () => {
     "buttons": [
       {
         "type": "reset",
-        "label": "Cancel",
+        "label": "Reset",
         "position": ""
       },
       {
@@ -70,16 +69,20 @@ const AddCardForm = () => {
     ]
   }
 
-  formDetails.onSubmit = () => {
-    console.log("form got submitted");
-  }
+  // formDetails.onSubmit = () => {
+  //   console.log("form got submitted");
+  // }
 
-  formDetails.validationSchema = {};
-  formDetails.initialValues = { fname: "", email: "" };
+  // formDetails.validationSchema = {};
+  // formDetails.initialValues = { fname: "", email: "" };
 
   return (
     <div>
-      <FormControl {...formDetails} ></FormControl>
+      <FormControl formDetails={formDetails} clientResetHandler={() => {
+        console.log("form reset");
+      }} clientSubmitHandler={() => {
+        console.log("form got submitted");
+      }}></FormControl>
     </div>
   )
 }
