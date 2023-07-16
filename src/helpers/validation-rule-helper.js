@@ -5,9 +5,14 @@ const emailRule = ({ required }) => {
     return isRequired(rule, { required });
 };
 
-const fnameRule = () => {
+const fnameRule = ({ required }) => {
     const rule = Yup.string().min(2).max(50);
-    return rule;
+    return isRequired(rule, { required });
+};
+
+const mongooseRule = ({ required }) => {
+    const rule = Yup.objectId();
+    return isRequired(rule, { required });
 };
 
 const positiveNumberRule = () => {
@@ -38,4 +43,4 @@ const buildSchemaByValidationRules = (yupSchemaObject, fieldDetail) => {
     return yupSchemaObject;
 };
 
-export { emailRule, fnameRule, positiveNumberRule, buildSchemaByValidationRules };
+export { emailRule, fnameRule, positiveNumberRule, buildSchemaByValidationRules, mongooseRule };

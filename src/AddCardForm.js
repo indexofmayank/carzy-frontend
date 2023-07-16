@@ -14,15 +14,11 @@ const AddCardForm = () => {
         "name": "fname",
         "placeholder": "",
         "required": true,
+        "ruleName": "fnameRule",
         "validationRules": [
           {
             "type": "alpha",
             "message": "{{field}} field should be valid Name"
-          },
-          {
-            "type": "min",
-            "message": "{{field}} field should be valid Name",
-            "value": 3
           },
           {
             "type": "max",

@@ -16,7 +16,7 @@ const useYupSchemaBuilder = ({ fields }) => {
 const buildYupSchemaByRuleNameOrValidationType = (field) => {
     let yupSchemaObject = null;
     if (field.ruleName) {
-        yupSchemaObject = validationRuleHelper[field.ruleName]({ required: true });
+        yupSchemaObject = validationRuleHelper[field.ruleName]({ required: field.required });
     } else {
         const validationType = field.validationType || field.type;
         yupSchemaObject = yupSchemaType(validationType);
