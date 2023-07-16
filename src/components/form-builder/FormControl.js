@@ -21,8 +21,8 @@ const FormControl = ({ formDetails, clientSubmitHandler, clientResetHandler }) =
           )
         }
       }
-    </Formik >
+    </Formik>
   )
-}
+};
 
 export default FormControl;
