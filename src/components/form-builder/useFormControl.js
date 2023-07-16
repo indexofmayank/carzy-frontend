@@ -1,3 +1,5 @@
+import useYupSchemaBuilder from "../../hooks/useYupSchemaBuilder";
+
 const useFormControl = ({ formDetails, clientSubmitHandler, clientResetHandler }) => {
 
     const initialValues = () => {
@@ -10,16 +12,18 @@ const useFormControl = ({ formDetails, clientSubmitHandler, clientResetHandler }
     }
 
     const submitHandler = (submittedValues) => {
-        console.log(submittedValues);
         clientSubmitHandler();
     }
 
     const resetHandler = () => {
         clientResetHandler();
     }
+    const validationSchema = useYupSchemaBuilder({ fields: formDetails.fields });
+    console.log(validationSchema);
 
     return {
         initialValues: initialValues(),
+        validationSchema,
         submitHandler,
         resetHandler
     };

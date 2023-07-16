@@ -10,8 +10,8 @@ function App() {
     <div className="abn_car_main_container">
       {/* <HeadersLayout /> */}
       {/* <FormLayout /> */}
-      <FormikDemo></FormikDemo>
-      {/* <AddCardForm></AddCardForm> */}
+      {/* <FormikDemo></FormikDemo> */}
+      <AddCardForm></AddCardForm>
     </div>
   );
 }

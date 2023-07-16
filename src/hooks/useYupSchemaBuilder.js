@@ -3,46 +3,52 @@ import fieldTypes from "../constants/FieldType";
 
 const useYupSchemaBuilder = ({ fields }) => {
     const schema = {};
-    fields.map((field) => {
+    fields.forEach((field) => {
         const validationType = field.validationType || field.type;
         const yupSchemaObject = yupSchemaType(validationType);
-        schema[field.name] = buildSchemaByValidationRules(yupSchemaObject, field);
-    })
+        schema[field.name] = field.required ? yupSchemaObject.required() : yupSchemaObject.nullable();
+        schema[field.name] = buildSchemaByValidationRules(schema[field.name], field);
+    });
     return Yup.object(schema);
 };
 
 const yupSchemaType = (validationType) => {
-    let yupObject = Yup;
+    let yupObject = null;
     switch (validationType) {
         case fieldTypes.text:
         case fieldTypes.password:
-            yupObject = yupObject.string();
+            yupObject = Yup.string();
             break;
         case fieldTypes.number:
-            yupObject = yupObject.number();
+            yupObject = Yup.number().positive("Please enter a valid number");
             break;
         default:
             break;
     }
     return yupObject;
-}
+};
 
 const buildSchemaByValidationRules = (yupSchemaObject, fieldDetail) => {
-    fieldDetail.validationRules.map((ruleDetail) => {
+    fieldDetail.validationRules.forEach((ruleDetail) => {
         switch (ruleDetail.type) {
-            case "required":
-                yupSchemaObject.required(ruleDetail.message);
-                break;
             case "min":
-                yupSchemaObject.min(ruleDetail.value, ruleDetail.message);
+                yupSchemaObject = yupSchemaObject.min(ruleDetail.value, ruleDetail.message);
                 break;
             case "max":
-                yupSchemaObject.max(ruleDetail.value, ruleDetail.message);
+                yupSchemaObject = yupSchemaObject.max(ruleDetail.value, ruleDetail.message);
+                break;
+            case "email":
+                yupSchemaObject = yupSchemaObject.email(ruleDetail.message);
                 break;
             default:
                 break;
         }
-    })
+    });
+    return yupSchemaObject;
+};
+
+const buildValidationMessage = (field) => {
+
 };
 
 export default useYupSchemaBuilder;

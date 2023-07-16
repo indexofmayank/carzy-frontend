@@ -16,10 +16,6 @@ const AddCardForm = () => {
         "required": true,
         "validationRules": [
           {
-            "type": "required",
-            "message": "this field is required"
-          },
-          {
             "type": "alpha",
             "message": "{{field}} field should be valid Name"
           },
@@ -41,16 +37,31 @@ const AddCardForm = () => {
         "label": "Email",
         "name": "email",
         "value": "",
-        "min": "",
-        "max": "",
+        "required": false,
         "validationRules": [
           {
-            "type": "required",
-            "message": "this field is required"
+            "type": "email",
+            "message": "{{field}} must be a valid email address"
+          }
+        ]
+      },
+      {
+        "type": "number",
+        "id": 3,
+        "label": "Age",
+        "name": "age",
+        "value": "",
+        "required": false,
+        "validationRules": [
+          {
+            "type": "min",
+            "message": "{{field}} must be greater than 3",
+            "value":10
           },
           {
-            "type": "alpha",
-            "message": "{{field}} field should be valid Name"
+            "type": "max",
+            "message": "{{field}} must be a valid email address",
+            "value":100
           }
         ]
       }
@@ -69,20 +80,17 @@ const AddCardForm = () => {
     ]
   }
 
-  // formDetails.onSubmit = () => {
-  //   console.log("form got submitted");
-  // }
+  const onSubmit = () => {
+    console.log("form got submitted");
+  }
 
-  // formDetails.validationSchema = {};
-  // formDetails.initialValues = { fname: "", email: "" };
+  const onReset = () => {
+    console.log("form got reset");
+  }
 
   return (
     <div>
-      <FormControl formDetails={formDetails} clientResetHandler={() => {
-        console.log("form reset");
-      }} clientSubmitHandler={() => {
-        console.log("form got submitted");
-      }}></FormControl>
+      <FormControl formDetails={formDetails} clientResetHandler={onReset} clientSubmitHandler={onSubmit}></FormControl>
     </div>
   )
 }
