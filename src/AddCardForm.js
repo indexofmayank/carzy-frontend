@@ -38,12 +38,7 @@ const AddCardForm = () => {
         "name": "email",
         "value": "",
         "required": false,
-        "validationRules": [
-          {
-            "type": "email",
-            "message": "{{field}} must be a valid email address"
-          }
-        ]
+        "ruleName": "emailRule"
       },
       {
         "type": "number",
@@ -56,12 +51,17 @@ const AddCardForm = () => {
           {
             "type": "min",
             "message": "{{field}} must be greater than 3",
-            "value":10
+            "value": 10
           },
           {
             "type": "max",
             "message": "{{field}} must be a valid email address",
-            "value":100
+            "value": 100
+          },
+          {
+            "type": "max",
+            "message": "{{field}} must be a valid email address",
+            "value": 50
           }
         ]
       }
