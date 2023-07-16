@@ -10,8 +10,18 @@ const fnameRule = ({ required }) => {
     return isRequired(rule, { required });
 };
 
-const mongooseRule = ({ required }) => {
-    const rule = Yup.objectId();
+// const mongooseRule = ({ required }) => {
+//     const rule = Yup.objectId();
+//     return isRequired(rule, { required });
+// };
+
+const dateRule = ({ required }) => {
+    const rule = Yup.date();
+    return isRequired(rule, { required });
+};
+
+const boolRule = ({ required }) => {
+    const rule = Yup.boolean();
     return isRequired(rule, { required });
 };
 
@@ -43,4 +53,4 @@ const buildSchemaByValidationRules = (yupSchemaObject, fieldDetail) => {
     return yupSchemaObject;
 };
 
-export { emailRule, fnameRule, positiveNumberRule, buildSchemaByValidationRules, mongooseRule };
+export { emailRule, fnameRule, positiveNumberRule, buildSchemaByValidationRules, dateRule, boolRule };

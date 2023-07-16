@@ -42,7 +42,7 @@ const AddCardForm = () => {
         "label": "Age",
         "name": "age",
         "value": "",
-        "required": false,
+        "required": true,
         "validationRules": [
           {
             "type": "min",
@@ -60,6 +60,15 @@ const AddCardForm = () => {
             "value": 50
           }
         ]
+      },
+      {
+        "type": "checkbox",
+        "id": 4,
+        "label": "Remember me",
+        "name": "remember",
+        "value": false,
+        "required": true,
+        "ruleName": "boolRule"
       }
     ],
     "buttons": [
@@ -78,17 +87,17 @@ const AddCardForm = () => {
 
   const onSubmit = () => {
     console.log("form got submitted");
-  }
+  };
 
   const onReset = () => {
     console.log("form got reset");
-  }
+  };
 
   return (
     <div>
       <FormControl formDetails={formDetails} clientResetHandler={onReset} clientSubmitHandler={onSubmit}></FormControl>
     </div>
   )
-}
+};
 
 export default AddCardForm;

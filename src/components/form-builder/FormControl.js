@@ -4,7 +4,6 @@ import { Form, Formik } from "formik";
 import useFormControl from "./useFormControl";
 import FormControlBody from "./FormControlBody";
 import FormControlFooter from "./FormControlFooter";
-import * as Yup from "yup";
 
 const FormControl = ({ formDetails, clientSubmitHandler, clientResetHandler }) => {
   const { initialValues, validationSchema, submitHandler, resetHandler } = useFormControl({ formDetails, clientResetHandler, clientSubmitHandler });
