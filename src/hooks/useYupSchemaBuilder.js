@@ -11,7 +11,6 @@ const useYupSchemaBuilder = ({ fields }) => {
     });
     return Yup.object(schema);
 };
-// wire ruleName,
 
 const buildYupSchemaByRuleNameOrValidationType = (field) => {
     let yupSchemaObject = null;
