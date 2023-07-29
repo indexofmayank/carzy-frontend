@@ -1,19 +1,15 @@
-import AddCardForm from './AddCardForm';
-import './App.scss';
-import FormikDemo from './FormikDemo';
-import FormLayout from './formlayout/FormLayout';
-import HeadersLayout from './header/headerLayout';
-import Login from './login/Login';
+// project import
+import Routes from 'routes';
+import ThemeCustomization from 'themes';
+// import ScrollTop from 'components/ScrollTop';
 
-function App() {
-  return (
-    <div className="abn_car_main_container">
-      {/* <HeadersLayout /> */}
-      {/* <FormLayout /> */}
-      {/* <FormikDemo></FormikDemo> */}
-      <AddCardForm></AddCardForm>
-    </div>
-  );
-}
+// ==============================|| APP - THEME, ROUTER, LOCAL  ||============================== //
 
+const App = () => (
+  <ThemeCustomization>
+    {/* <ScrollTop> */}
+    <Routes />
+    {/* </ScrollTop> */}
+  </ThemeCustomization>
+);
 export default App;

@@ -1,6 +1,6 @@
-import * as Yup from "yup";
-import fieldTypes from "../constants/FieldType";
-import * as validationRuleHelper from "../helpers/validation-rule-helper";
+import * as Yup from 'yup';
+import fieldTypes from '../constants/FieldType';
+import * as validationRuleHelper from '../helpers/validation-rule-helper';
 
 const useYupSchemaBuilder = ({ fields }) => {
     const schema = {};
@@ -31,16 +31,12 @@ const yupSchemaType = (validationType) => {
             yupObject = Yup.string();
             break;
         case fieldTypes.number:
-            yupObject = Yup.number().positive("Please enter a valid number");
+            yupObject = Yup.number().positive('Please enter a valid number');
             break;
         default:
             break;
     }
     return yupObject;
-};
-
-const buildValidationMessage = (field) => {
-
 };
 
 export default useYupSchemaBuilder;

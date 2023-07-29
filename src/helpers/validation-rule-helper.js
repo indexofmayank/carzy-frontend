@@ -1,4 +1,4 @@
-import * as Yup from "yup";
+import * as Yup from 'yup';
 
 const emailRule = ({ required }) => {
     const rule = Yup.string().email();
@@ -7,6 +7,14 @@ const emailRule = ({ required }) => {
 
 const fnameRule = ({ required }) => {
     const rule = Yup.string().min(2).max(50);
+    return isRequired(rule, { required });
+};
+
+const passwordRule = ({ required }) => {
+    // const pRule = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
+    const rule = Yup.string()
+        .min(6, 'Password is too short - should be 8 chars minimum.')
+        .max(16, 'Password is too big - should be 16 chars long.');
     return isRequired(rule, { required });
 };
 
@@ -37,13 +45,13 @@ const isRequired = (yupObject, { required }) => {
 const buildSchemaByValidationRules = (yupSchemaObject, fieldDetail) => {
     fieldDetail?.validationRules?.forEach((ruleDetail) => {
         switch (ruleDetail.type) {
-            case "min":
+            case 'min':
                 yupSchemaObject = yupSchemaObject.min(ruleDetail.value, ruleDetail.message);
                 break;
-            case "max":
+            case 'max':
                 yupSchemaObject = yupSchemaObject.max(ruleDetail.value, ruleDetail.message);
                 break;
-            case "email":
+            case 'email':
                 yupSchemaObject = yupSchemaObject.email(ruleDetail.message);
                 break;
             default:
@@ -53,4 +61,4 @@ const buildSchemaByValidationRules = (yupSchemaObject, fieldDetail) => {
     return yupSchemaObject;
 };
 
-export { emailRule, fnameRule, positiveNumberRule, buildSchemaByValidationRules, dateRule, boolRule };
+export { emailRule, fnameRule, positiveNumberRule, buildSchemaByValidationRules, dateRule, boolRule, passwordRule };
