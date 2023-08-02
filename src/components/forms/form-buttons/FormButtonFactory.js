@@ -1,12 +1,15 @@
+import ResetButton from "./ResetButton";
+import SubmitButton from "./SubmitButton";
+
 const FormButtonFactory = ({ button }) => {
     const type = button.type;
     let jsx;
     switch (type) {
         case 'submit':
-            jsx = <button type="submit">{button.label}</button>;
+            jsx = <SubmitButton button={button}></SubmitButton>;
             break;
         case 'reset':
-            jsx = <button type="reset">{button.label}</button>;
+            jsx = <SubmitButton button={button}></SubmitButton>;
             break;
         default:
             break;

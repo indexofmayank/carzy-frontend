@@ -47,6 +47,12 @@ const AddCardForm = () => {
                 label: 'Add Car',
                 position: ''
             }
+            ,
+            {
+                type: 'submit',
+                label: 'Add Car and new ',
+                position: ''
+            }
         ]
     };
 
@@ -59,9 +65,7 @@ const AddCardForm = () => {
     };
 
     return (
-        <div>
-            <FormControl formDetails={formDetails} clientResetHandler={onReset} clientSubmitHandler={onSubmit}></FormControl>
-        </div>
+        <FormControl formDetails={formDetails} clientResetHandler={onReset} clientSubmitHandler={onSubmit}></FormControl>
     );
 };
 

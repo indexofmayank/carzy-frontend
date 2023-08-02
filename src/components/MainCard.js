@@ -100,20 +100,20 @@ const MainCard = forwardRef(
                                         </Tooltip>
                                     </CopyToClipboard>
                                     <Divider orientation="vertical" variant="middle" flexItem sx={{ mx: 1 }} />
-                                    <Tooltip title="Submit" placement="top-end">
-                                        <Button
-                                            variant="contained"
-                                            color="success"
-                                            size="large"
-                                            onclick={() => setHighlight(!!highlight)}
-                                            startIcon={<PlusCircleOutlined />}
-                                        >
-                                            Submit
-                                        </Button>
-                                    </Tooltip>
+                                    {/* <Tooltip title="Submit" placement="top-end"> */}
+                                    <Button
+                                        variant="contained"
+                                        color="success"
+                                        size="large"
+                                        onclick={() => setHighlight(!!highlight)}
+                                        startIcon={<PlusCircleOutlined />}
+                                    >
+                                        Submit
+                                    </Button>
+                                    {/* </Tooltip> */}
                                 </Box>
                             </CardActions>
-                            <Collapse in={highlight}>
+                            {/* <Collapse in={highlight}>
                                 {highlight && (
                                     <SyntaxHighlight>
                                         {reactElementToJSXString(children, {
@@ -123,7 +123,7 @@ const MainCard = forwardRef(
                                         })}
                                     </SyntaxHighlight>
                                 )}
-                            </Collapse>
+                            </Collapse> */}
                         </Box>
                     </>
                 )}
