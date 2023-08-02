@@ -27,8 +27,49 @@ const AddCardForm = () => {
                 ]
             },
             {
-                type: 'password',
+                type: 'text',
                 id: 2,
+                label: 'Last name',
+                value: '',
+                name: 'lname',
+                placeholder: '',
+                required: true,
+                ruleName: 'fnameRule',
+                validationRules: [
+                    {
+                        type: 'alpha',
+                        message: '{{field}} field should be valid Name'
+                    },
+                    {
+                        type: 'max',
+                        message: '{{field}} field should be valid Name',
+                        value: '10'
+                    }
+                ]
+            },
+
+            {
+                type: 'text',
+                id: 3,
+                label: 'Email',
+                value: '',
+                name: 'email',
+                required: true,
+                validationRules: [
+                    {
+                        type: 'alpha',
+                        message: '{{field}} field should be valid Name'
+                    },
+                    {
+                        type: 'max',
+                        message: '{{field}} field should be valid Name',
+                        value: '10'
+                    }
+                ]
+            },
+            {
+                type: 'password',
+                id: 4,
                 label: 'Password',
                 name: 'password',
                 value: '',
