@@ -1,6 +1,7 @@
 import fieldTypes from '../../../constants/FieldType';
 import { Grid, Stack, InputLabel, OutlinedInput } from '@mui/material';
 import TextField from './TextField';
+import SelectField from './SelectField';
 // import TextField from './TextField';
 // import PasswordField from './PasswordField';
 // import CheckboxField from './CheckboxField';
@@ -22,7 +23,7 @@ const FormFieldFactory = ({ field, formik }) => {
             jsx = <TextField formik={formik} field={field} />;
             break;
         case fieldTypes.select:
-            jsx = <TextField formik={formik} field={field} />;
+            jsx = <SelectField formik={formik} field={field} />;
             break;
         case fieldTypes.autocomplete:
             jsx = <TextField formik={formik} field={field} />;

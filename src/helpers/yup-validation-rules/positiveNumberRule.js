@@ -1,4 +1,3 @@
-
 const positiveNumberRule = (yupSchemaObject) => {
     const rule = yupSchemaObject.positive();
     return rule;

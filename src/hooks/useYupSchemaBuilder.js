@@ -2,6 +2,7 @@ import * as Yup from 'yup';
 import fieldTypes from '../constants/FieldType';
 import * as yupValidationRules from '../helpers/yup-validation-rules';
 import VALIDATION_TYPE from 'constants/ValidationType';
+import buildYupValidationMessage from 'helpers/yupValidationMessageBuilder';
 
 const useYupSchemaBuilder = ({ fields }) => {
     const schema = {};
@@ -13,27 +14,27 @@ const useYupSchemaBuilder = ({ fields }) => {
 };
 
 const buildYupSchemaByRuleNameOrValidationRules = (field, yupSchemaObject) => {
-    if (field.ruleName) {
-        yupSchemaObject = yupValidationRules[field.ruleName]({ yupSchemaObject, field });
+    if (field.rule_name) {
+        yupSchemaObject = yupValidationRules[field.rule_name]({ yupSchemaObject, field });
     }
     yupSchemaObject = buildSchemaByValidationRules(yupSchemaObject, field);
     return yupSchemaObject;
 };
 
 const buildSchemaByValidationRules = (yupSchemaObject, fieldDetail) => {
-    fieldDetail?.validationRules?.forEach((ruleDetail) => {
+    fieldDetail?.validation_rules?.forEach((ruleDetail) => {
         switch (ruleDetail.type) {
             case VALIDATION_TYPE.minChars:
-                yupSchemaObject = yupSchemaObject.min(ruleDetail.value, buildSchemaByValidationRules(VALIDATION_TYPE.minChars, fieldDetail, ruleDetail.value));
+                yupSchemaObject = yupSchemaObject.min(ruleDetail.value, buildYupValidationMessage(VALIDATION_TYPE.minChars, fieldDetail, ruleDetail.value));
                 break;
             case VALIDATION_TYPE.min:
-                yupSchemaObject = yupSchemaObject.min(ruleDetail.value, buildSchemaByValidationRules(VALIDATION_TYPE.min, fieldDetail, ruleDetail.value));
+                yupSchemaObject = yupSchemaObject.min(ruleDetail.value, buildYupValidationMessage(VALIDATION_TYPE.min, fieldDetail, ruleDetail.value));
                 break;
             case VALIDATION_TYPE.max:
-                yupSchemaObject = yupSchemaObject.max(ruleDetail.value, buildSchemaByValidationRules(VALIDATION_TYPE.max, fieldDetail, ruleDetail.value));
+                yupSchemaObject = yupSchemaObject.max(ruleDetail.value, buildYupValidationMessage(VALIDATION_TYPE.max, fieldDetail, ruleDetail.value));
                 break;
             case VALIDATION_TYPE.maxChars:
-                yupSchemaObject = yupSchemaObject.max(ruleDetail.value, buildSchemaByValidationRules(VALIDATION_TYPE.maxChars, fieldDetail, ruleDetail.value));
+                yupSchemaObject = yupSchemaObject.max(ruleDetail.value, buildYupValidationMessage(VALIDATION_TYPE.maxChars, fieldDetail, ruleDetail.value));
                 break;
             default:
                 break;
@@ -47,16 +48,17 @@ const initiateYupSchemaType = (field) => {
     switch (field.type) {
         case fieldTypes.text:
         case fieldTypes.password:
+        case fieldTypes.select:
             yupObject = Yup.string();
             break;
         case fieldTypes.number:
             yupObject = Yup.number();
             break;
         default:
+            yupObject = Yup.string();
             break;
     }
-    const requiredMessage = field.requiredMessage ?? `${field.label} is required field`;
-    yupObject = field.required ? yupObject.required(requiredMessage) : yupObject.nullable();
+    yupObject = field.required ? yupObject.required(buildYupValidationMessage(VALIDATION_TYPE.required, field)) : yupObject.nullable();
     return yupObject;
 };
 

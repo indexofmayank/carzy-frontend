@@ -32,7 +32,7 @@ export default function ComponentsOverrides(theme) {
     LinearProgress(),
     Link(),
     ListItemIcon(),
-    OutlinedInput(theme),
+    // OutlinedInput(theme),
     Tab(theme),
     TableCell(theme),
     Tabs(),

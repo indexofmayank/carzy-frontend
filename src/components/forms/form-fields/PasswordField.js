@@ -1,5 +1,5 @@
 import { ErrorMessage, Field } from 'formik';
-import withCommonFormField from './withCommonTextFormField';
+import withCommonFormField from './withCommonFieldProps';
 
 const PasswordField = ({ field, formik }) => {
     const { name, placeholder, label } = field;

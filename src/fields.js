@@ -9,8 +9,15 @@ const formDetails = {
             value: '',
             name: 'fname',
             required: true,
-            ruleName: 'fnameRule',
-            required_message: "Please enter proper first name"
+            rule_name: 'fnameRule',
+            required_message: "Please enter proper first name",
+            // validation_rules: [
+            //     {
+            //         type: 'minChars',
+            //         message: 'value must be less than 1',
+            //         value: '3'
+            //     }
+            // ]
         },
         {
             type: 'text',
@@ -20,7 +27,7 @@ const formDetails = {
             name: 'llname',
             placeholder: '',
             required: true,
-            ruleName: 'fnameRule'
+            rule_name: 'fnameRule'
         },
 
         {
@@ -30,19 +37,19 @@ const formDetails = {
             value: '',
             name: 'email',
             required: true,
-            ruleName: 'emailRule',
-            validation_rules: [
-                {
-                    type: 'min',
-                    message: 'Email field should be atleast 10 chars long',
-                    value: '10'
-                },
-                {
-                    type: 'max',
-                    message: 'Email field should be maximum 15 chars long',
-                    value: '15'
-                }
-            ]
+            rule_name: 'emailRule',
+            // validation_rules: [
+            //     {
+            //         type: 'minChars',
+            //         message: 'Email field should be atleast 10 chars long',
+            //         value: '10'
+            //     },
+            //     {
+            //         type: 'maxChars',
+            //         message: 'Email field should be maximum 15 chars long',
+            //         value: '15'
+            //     }
+            // ]
         },
         {
             type: 'password',
@@ -51,7 +58,15 @@ const formDetails = {
             name: 'password',
             value: '',
             required: false,
-            ruleName: 'passwordRule'
+            rule_name: 'passwordRule'
+        },
+        {
+            type: 'select',
+            id: 5,
+            label: 'Country',
+            value: '',
+            name: 'country',
+            required: true
         }
     ],
     buttons: [
