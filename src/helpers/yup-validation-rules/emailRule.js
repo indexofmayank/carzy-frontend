@@ -1,9 +1,6 @@
-import { isRequired } from 'helpers/validation-rule-helper';
-import * as Yup from 'yup';
-
-const emailRule = ({ required }) => {
-    const rule = Yup.string().email();
-    return isRequired(rule, { required });
+const emailRule = (yupSchemaObject) => {
+    const rule = yupSchemaObject.email("Please enter valid email");
+    return rule;
 };
 
 export default emailRule;

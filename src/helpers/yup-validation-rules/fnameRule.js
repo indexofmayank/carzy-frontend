@@ -1,9 +1,7 @@
-import { isRequired } from 'helpers/validation-rule-helper';
-import * as Yup from 'yup';
 
-const fnameRule = ({ required }) => {
-    const rule = Yup.string().min(2).max(5);
-    return isRequired(rule, { required });
+const fnameRule = (yupSchemaObject) => {
+    const rule = yupSchemaObject.min(2).max(50);
+    return rule;
 };
 
 export default fnameRule;

@@ -14,7 +14,7 @@ const TextField = ({ field, formik }) => {
         onChange: formik.handleChange,
         ...extraConf
     };
-    if (field.required && field.validationRules?.length > 0) {
+    if (field.required || field.ruleName || field.validationRules?.length > 0) {
         defaultField = {
             ...defaultField, onBlur: formik.handleBlur,
             error: formik.touched[fieldName] && Boolean(formik.errors[fieldName]),

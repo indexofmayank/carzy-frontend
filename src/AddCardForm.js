@@ -11,7 +11,8 @@ const AddCardForm = () => {
                 label: 'First name',
                 value: '',
                 name: 'fname',
-                placeholder: ''
+                required: true,
+                ruleName: 'fnameRule',
             },
             {
                 type: 'text',
@@ -43,17 +44,18 @@ const AddCardForm = () => {
                 name: 'email',
                 required: true,
                 ruleName: 'emailRule',
-                // validationRules: [
-                //     {
-                //         type: 'alpha',
-                //         message: '{{field}} field should be valid Name'
-                //     },
-                //     {
-                //         type: 'max',
-                //         message: '{{field}} field should be valid Name',
-                //         value: '10'
-                //     }
-                // ]
+                validationRules: [
+                    {
+                        type: 'min',
+                        message: 'Email field should be atleast 10 chars long',
+                        value: '10'
+                    },
+                    {
+                        type: 'max',
+                        message: 'Email field should be maximum 15 chars long',
+                        value: '15'
+                    }
+                ]
             },
             {
                 type: 'password',
