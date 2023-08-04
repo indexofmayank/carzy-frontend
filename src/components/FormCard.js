@@ -6,7 +6,7 @@ import { useTheme } from '@mui/material/styles';
 import { Card, CardContent, CardHeader, Divider, Typography, Box, CardActions, Collapse, Tooltip, Button } from '@mui/material';
 
 import FormControlFooter from './forms/form-builder/FormControlFooter';
-import { Form, Formik } from 'formik';
+import { Form } from 'formik';
 // header style
 const headerSX = {
     p: 2.5,
@@ -62,7 +62,7 @@ const FormCard = forwardRef(
                 {title && (
                     <CardHeader sx={headerSX} titleTypographyProps={{ variant: 'subtitle1' }} title={title} action={secondary} />
                 )}
-                <Form>
+                <Form noValidate>
                     {content && <CardContent sx={contentSX}>{children}</CardContent>}
                     <Divider sx={{ borderStyle: 'dashed' }} />
                     <Box sx={{ position: 'relative', pt: 2, pb: 2, pl: 5.25, pr: 5.25 }}>

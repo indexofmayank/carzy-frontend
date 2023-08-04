@@ -1,13 +1,13 @@
 import * as Yup from 'yup';
 import fieldTypes from '../constants/FieldType';
 import * as validationRuleHelper from '../helpers/validation-rule-helper';
+import * as yupValidationRules from '../helpers/yup-validation-rules';
 
 const useYupSchemaBuilder = ({ fields }) => {
     const schema = {};
     fields.forEach((field) => {
         const yupSchemaObject = buildYupSchemaByRuleNameOrValidationType(field);
-        schema[field.name] = field.required ? yupSchemaObject.required() : yupSchemaObject.nullable();
-        schema[field.name] = validationRuleHelper.buildSchemaByValidationRules(schema[field.name], field);
+        schema[field.name] = validationRuleHelper.buildSchemaByValidationRules(yupSchemaObject, field);
     });
     return Yup.object(schema);
 };
@@ -15,17 +15,16 @@ const useYupSchemaBuilder = ({ fields }) => {
 const buildYupSchemaByRuleNameOrValidationType = (field) => {
     let yupSchemaObject = null;
     if (field.ruleName) {
-        yupSchemaObject = validationRuleHelper[field.ruleName]({ required: field.required });
+        yupSchemaObject = yupValidationRules[field.ruleName]({ required: field.required });
     } else {
-        const validationType = field.validationType || field.type;
-        yupSchemaObject = yupSchemaType(validationType);
+        yupSchemaObject = initiateYupSchemaType(field);
     }
     return yupSchemaObject;
 };
 
-const yupSchemaType = (validationType) => {
+const initiateYupSchemaType = (field) => {
     let yupObject = null;
-    switch (validationType) {
+    switch (field.type) {
         case fieldTypes.text:
         case fieldTypes.password:
             yupObject = Yup.string();
@@ -36,6 +35,7 @@ const yupSchemaType = (validationType) => {
         default:
             break;
     }
+    yupObject = field.required ? yupObject.required() : yupObject.nullable();
     return yupObject;
 };
 

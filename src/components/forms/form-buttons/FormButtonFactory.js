@@ -9,7 +9,7 @@ const FormButtonFactory = ({ button }) => {
             jsx = <SubmitButton button={button}></SubmitButton>;
             break;
         case 'reset':
-            jsx = <SubmitButton button={button}></SubmitButton>;
+            jsx = <ResetButton button={button}></ResetButton>;
             break;
         default:
             break;

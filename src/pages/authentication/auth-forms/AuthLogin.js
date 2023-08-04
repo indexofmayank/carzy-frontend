@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
-// material-ui
 import {
   Button,
   Checkbox,
@@ -84,7 +83,7 @@ const AuthLogin = () => {
                     error={Boolean(touched.email && errors.email)}
                   />
                   {touched.email && errors.email && (
-                    <FormHelperText error id="standard-weight-helper-text-email-login">
+                    <FormHelperText error>
                       {errors.email}
                     </FormHelperText>
                   )}

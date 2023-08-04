@@ -12,13 +12,22 @@ const FormFieldFactory = ({ field, formik }) => {
         case fieldTypes.email:
             jsx = <TextField formik={formik} field={field} />;
             break;
-        case fieldTypes.text:
-            jsx = <TextField formik={formik} field={field} />;
-            break;
+        // case fieldTypes.text:
+        //     jsx = <TextField formik={formik} field={field} />;
+        //     break;
         case fieldTypes.password:
             jsx = <TextField formik={formik} field={field} />;
             break;
         case fieldTypes.checkbox:
+            jsx = <TextField formik={formik} field={field} />;
+            break;
+        case fieldTypes.select:
+            jsx = <TextField formik={formik} field={field} />;
+            break;
+        case fieldTypes.autocomplete:
+            jsx = <TextField formik={formik} field={field} />;
+            break;
+        case fieldTypes.toggle:
             jsx = <TextField formik={formik} field={field} />;
             break;
         default:

@@ -3,16 +3,14 @@ import { PlusCircleOutlined } from '@ant-design/icons';
 import StandardButton from "components/buttons/StandardButton";
 
 const ResetButton = ({ button }) => {
-    const submitButtonConfig = { ...button, type: "reset", color: "danger" };
+    const resetButtonConfig = { ...button, type: "reset", color: "error" };
     return (
-        <StandardButton {...submitButtonConfig} icon={<PlusCircleOutlined />}></StandardButton>
+        <StandardButton {...resetButtonConfig} icon={<PlusCircleOutlined />}></StandardButton>
     )
 };
 
 ResetButton.propTypes = {
-    button: PropTypes.exact({
-        type: PropTypes.string,
-    })
+    button: PropTypes.object
 };
 
 export default ResetButton;

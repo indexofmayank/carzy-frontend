@@ -10,15 +10,14 @@ const useFormControl = ({ formDetails, clientSubmitHandler, clientResetHandler }
         return initialFieldValues;
     };
 
-    const submitHandler = () => {
-        clientSubmitHandler();
+    const submitHandler = (value) => {
+        clientSubmitHandler(value);
     };
 
     const resetHandler = () => {
         clientResetHandler();
     };
     const validationSchema = useYupSchemaBuilder({ fields: formDetails.fields });
-    console.log(validationSchema);
 
     return {
         initialValues: initialValues(),

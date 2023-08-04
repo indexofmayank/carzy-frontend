@@ -11,27 +11,14 @@ const AddCardForm = () => {
                 label: 'First name',
                 value: '',
                 name: 'fname',
-                placeholder: '',
-                required: true,
-                ruleName: 'fnameRule',
-                validationRules: [
-                    {
-                        type: 'alpha',
-                        message: '{{field}} field should be valid Name'
-                    },
-                    {
-                        type: 'max',
-                        message: '{{field}} field should be valid Name',
-                        value: '10'
-                    }
-                ]
+                placeholder: ''
             },
             {
                 type: 'text',
                 id: 2,
                 label: 'Last name',
                 value: '',
-                name: 'lname',
+                name: 'llname',
                 placeholder: '',
                 required: true,
                 ruleName: 'fnameRule',
@@ -40,11 +27,11 @@ const AddCardForm = () => {
                         type: 'alpha',
                         message: '{{field}} field should be valid Name'
                     },
-                    {
-                        type: 'max',
-                        message: '{{field}} field should be valid Name',
-                        value: '10'
-                    }
+                    // {
+                    //     type: 'max',
+                    //     message: '{{field}} field should be valid Name',
+                    //     value: '10'
+                    // }
                 ]
             },
 
@@ -55,17 +42,18 @@ const AddCardForm = () => {
                 value: '',
                 name: 'email',
                 required: true,
-                validationRules: [
-                    {
-                        type: 'alpha',
-                        message: '{{field}} field should be valid Name'
-                    },
-                    {
-                        type: 'max',
-                        message: '{{field}} field should be valid Name',
-                        value: '10'
-                    }
-                ]
+                ruleName: 'emailRule',
+                // validationRules: [
+                //     {
+                //         type: 'alpha',
+                //         message: '{{field}} field should be valid Name'
+                //     },
+                //     {
+                //         type: 'max',
+                //         message: '{{field}} field should be valid Name',
+                //         value: '10'
+                //     }
+                // ]
             },
             {
                 type: 'password',
@@ -97,8 +85,9 @@ const AddCardForm = () => {
         ]
     };
 
-    const onSubmit = () => {
+    const onSubmit = (fieldValues) => {
         console.log('form got submitted');
+        console.log(fieldValues);
     };
 
     const onReset = () => {
