@@ -3,7 +3,10 @@ const fieldTypes = {
     password: 'password',
     email: 'email',
     number: 'number',
-    checkbox: 'checkbox'
+    checkbox: 'checkbox',
+    select: 'select',
+    autocomplete: 'autocomplete',
+    toggle: 'toggle'
 };
 
 export default fieldTypes;

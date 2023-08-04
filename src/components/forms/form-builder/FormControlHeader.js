@@ -1,5 +1,5 @@
 const FormControlHeader = (formDetail) => {
-    return <div>{formDetail.label}</div>;
+    return <>{formDetail.label}</>;
 };
 
 export default FormControlHeader;

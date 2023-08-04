@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { InputLabel, OutlinedInput } from '@mui/material';
 import FieldValidationMessage from './FieldValidationMessage';
 
-const TextField = ({ field, formik }) => {
+const SelectField = ({ field, formik }) => {
     const fieldName = field.name;
     const label = field.label;
     const extraConf = field.extraConf ?? {};
@@ -14,7 +14,7 @@ const TextField = ({ field, formik }) => {
         onChange: formik.handleChange,
         ...extraConf
     };
-    if (field.required || field.ruleName || field.validationRules?.length > 0) {
+    if (field.required && field.validations?.length > 0) {
         defaultField = {
             ...defaultField, onBlur: formik.handleBlur,
             error: formik.touched[fieldName] && Boolean(formik.errors[fieldName]),
@@ -23,15 +23,15 @@ const TextField = ({ field, formik }) => {
     return (
         <>
             <InputLabel htmlFor={fieldName}>{label}</InputLabel>
-            <OutlinedInput {...defaultField} fullWidth />
+            <OutlinedInput select {...defaultField} fullWidth />
             <FieldValidationMessage field={field} formik={formik} />
         </>
     );
 };
 
-TextField.propTypes = {
+SelectField.propTypes = {
     field: PropTypes.object,
     formik: PropTypes.object
 };
 
-export default TextField;
+export default SelectField;

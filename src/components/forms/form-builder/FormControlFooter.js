@@ -1,12 +1,21 @@
+import { Divider } from '@mui/material';
 import FormButtonFactory from '../form-buttons/FormButtonFactory';
+import React from 'react';
 
 const FormControlFooter = ({ buttons }) => {
+    // let firstButton = buttons.shift();
     return (
-        <div>
-            {buttons.map((button) => {
-                return <FormButtonFactory key={button.type} button={button}></FormButtonFactory>;
+        <>
+            {/* <FormButtonFactory key={0} button={firstButton}></FormButtonFactory>; */}
+            {buttons.map((button, index) => {
+                return (
+                    <React.Fragment key={index}>
+                        {index !== 0 && <Divider orientation="vertical" variant="middle" flexItem sx={{ mx: 1 }} />}
+                        <FormButtonFactory key={button.type} button={button} ></FormButtonFactory>
+                    </React.Fragment>
+                )
             })}
-        </div>
+        </>
     );
 };
 
