@@ -16,6 +16,7 @@ const Color = Loadable(lazy(() => import('pages/components-overview/Color')));
 // const Shadow = Loadable(lazy(() => import('pages/components-overview/ShadowListing')));
 const Shadow = Loadable(lazy(() => import('pages/components-overview/SellerCarForm')));
 const AddSellerCar = Loadable(lazy(() => import('pages/seller-car/forms/AddSellerCar')));
+const SellerCarList = Loadable(lazy(() => import('pages/seller-car/SellerCarList')));
 const AntIcons = Loadable(lazy(() => import('pages/components-overview/AntIcons')));
 
 // ==============================|| MAIN ROUTING ||============================== //
@@ -46,8 +47,12 @@ const MainRoutes = {
     //   element: <SamplePage />
     // },
     {
-      path: 'seller-car',
+      path: 'add-seller-car',
       element: <AddSellerCar />
+    },
+    {
+      path: 'seller-car',
+      element: <SellerCarList />
     },
     {
       path: 'shadow',
