@@ -13,7 +13,7 @@ const headerSX = {
     '& .MuiCardHeader-action': { m: '0px auto', alignSelf: 'center' }
 };
 // ==============================|| CUSTOM - MAIN CARD ||============================== //
-const FormCard = forwardRef(
+const ListCard = forwardRef(
     (
         {
             border = true,
@@ -27,8 +27,6 @@ const FormCard = forwardRef(
             shadow,
             sx = {},
             title,
-            formik,
-            buttons,
             codeHighlight,
             ...others
         },
@@ -62,22 +60,12 @@ const FormCard = forwardRef(
                 {title && (
                     <CardHeader sx={headerSX} titleTypographyProps={{ variant: 'subtitle1' }} title={title} action={secondary} />
                 )}
-                <Form noValidate>
-                    {content && <CardContent sx={contentSX}>{children}</CardContent>}
-                    <Divider sx={{ borderStyle: 'dotted' }} />
-                    <Box sx={{ position: 'relative', pt: 2, pb: 2, pl: 5.25, pr: 5.25 }}>
-                        <CardActions sx={{ justifyContent: 'flex-end', p: 1, mb: highlight ? 1 : 0 }}>
-                            <Box sx={{ display: 'flex', position: 'inherit', right: 0, top: 6 }}>
-                                <FormControlFooter buttons={buttons}></FormControlFooter>
-                            </Box>
-                        </CardActions>
-                    </Box>
-                </Form>
+                {content && <CardContent sx={contentSX}>{children}</CardContent>}
             </Card>
         );
     }
 );
-FormCard.propTypes = {
+ListCard.propTypes = {
     border: PropTypes.bool,
     boxShadow: PropTypes.bool,
     contentSX: PropTypes.object,
@@ -92,4 +80,4 @@ FormCard.propTypes = {
     content: PropTypes.bool,
     children: PropTypes.node
 };
-export default FormCard;
+export default ListCard;
