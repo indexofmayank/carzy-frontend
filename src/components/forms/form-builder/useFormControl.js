@@ -10,8 +10,10 @@ const useFormControl = ({ formDetails, clientSubmitHandler, clientResetHandler }
         return initialFieldValues;
     };
 
-    const submitHandler = (value) => {
+    const submitHandler = (value, actions) => {
+        console.log("actions", actions);
         clientSubmitHandler(value);
+        actions.resetForm();
     };
 
     const resetHandler = () => {

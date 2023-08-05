@@ -5,7 +5,8 @@ import withDefaultFormField from './withDefaultFormField';
 const TextField = ({ defaultField, field, formik }) => {
     let textField = {
         ...defaultField,
-        type: "text"
+        type: field.type,
+        placeholder: `Enter ${field.label}`
     };
     return (
         <OutlinedInput {...textField} fullWidth />

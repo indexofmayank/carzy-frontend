@@ -15,6 +15,7 @@ const Typography = Loadable(lazy(() => import('pages/components-overview/Typogra
 const Color = Loadable(lazy(() => import('pages/components-overview/Color')));
 // const Shadow = Loadable(lazy(() => import('pages/components-overview/ShadowListing')));
 const Shadow = Loadable(lazy(() => import('pages/components-overview/SellerCarForm')));
+const AddSellerCar = Loadable(lazy(() => import('pages/seller-car/forms/AddSellerCar')));
 const AntIcons = Loadable(lazy(() => import('pages/components-overview/AntIcons')));
 
 // ==============================|| MAIN ROUTING ||============================== //
@@ -40,9 +41,13 @@ const MainRoutes = {
         }
       ]
     },
+    // {
+    //   path: 'sample-page',
+    //   element: <SamplePage />
+    // },
     {
-      path: 'sample-page',
-      element: <SamplePage />
+      path: 'seller-car',
+      element: <AddSellerCar />
     },
     {
       path: 'shadow',

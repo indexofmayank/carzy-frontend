@@ -1,5 +1,5 @@
-import FormControl from './components/forms/form-builder/FormControl';
-import formDetails from "./fields";
+import FormControl from "components/forms/form-builder/FormControl";
+import formDetails from "fields";
 
 const AddCardForm = () => {
     const onSubmit = (fieldValues, actions) => {
