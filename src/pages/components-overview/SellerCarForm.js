@@ -1,7 +1,9 @@
-import AddCardForm from 'AddCardForm';
+ import AddCardForm from 'AddCardForm';
+import {default as SellerCar} from '../seller-car/SellerCarList';
+
 const ComponentShadow = () => {
     return (
-        <AddCardForm></AddCardForm>
-    );
+        <SellerCar></SellerCar>
+        );
 };
 export default ComponentShadow;
