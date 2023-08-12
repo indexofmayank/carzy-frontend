@@ -1,6 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { styled, alpha } from '@mui/material/styles';
+import { alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -21,15 +21,8 @@ import Switch from '@mui/material/Switch';
 import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
-import { string } from '../../../node_modules/yup/lib/index';
+import Search from 'layout/MainLayout/Header/HeaderContent/Search';
 import ActionMenu from 'components/buttons/ActionButton';
-import TableWithPagination from 'components/pagination/pagination';
-import PaginationRounded from 'components/pagination/pagination';
-import InputBase from '@mui/material/InputBase';
-import SearchIcon from '@mui/icons-material/Search';
-
-// import Search from 'layout/MainLayout/Header/HeaderContent/Search';
-
 
 function createData(name, calories, fat, carbs, protein) {
   return {
@@ -40,8 +33,6 @@ function createData(name, calories, fat, carbs, protein) {
     protein,
   };
 }
-
-
 
 const rows = [
   createData('Cupcake', 305, 3.7, 67, 4.3),
@@ -58,48 +49,6 @@ const rows = [
   createData('Nougat', 360, 19.0, 9, 37.0),
   createData('Oreo', 437, 18.0, 63, 4.0),
 ];
-
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(1),
-    width: 'auto',
-  },
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: '12ch',
-      '&:focus': {
-        width: '20ch',
-      },
-    },
-  },
-}));
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -164,6 +113,12 @@ const headCells = [
     disablePadding: false,
     label: 'Protein (g)',
   },
+  {
+    id: 'action',
+    numeric: false,
+    disablePadding: true,
+    label: 'Action'
+  }
 ];
 
 function EnhancedTableHead(props) {
@@ -173,10 +128,7 @@ function EnhancedTableHead(props) {
     onRequestSort(event, property);
   };
 
-
   return (
-    // <ListCard title="list" codeHighlight contentSX={{ pl: 12.25, pr: 12.25, minHeight: 'calc(100vh - 320px)' }}>
-
     <TableHead>
       <TableRow>
         <TableCell padding="checkbox">
@@ -213,7 +165,6 @@ function EnhancedTableHead(props) {
         ))}
       </TableRow>
     </TableHead>
-    // </ListCard>
   );
 }
 
@@ -233,16 +184,12 @@ function EnhancedTableToolbar(props) {
     <Toolbar
       sx={{
         pl: { sm: 2 },
-        pr: { xs: 1, sm: 1,  },
+        pr: { xs: 1, sm: 1 },
         ...(numSelected > 0 && {
           bgcolor: (theme) =>
             alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity),
         }),
-
       }}
-    >
-    <Box
-
     >
       {numSelected > 0 ? (
         <Typography
@@ -271,19 +218,11 @@ function EnhancedTableToolbar(props) {
           </IconButton>
         </Tooltip>
       ) : (
-        <Search>
-          <SearchIconWrapper>
-            <SearchIcon />
-          </SearchIconWrapper>
-          <StyledInputBase
-            placeholder="Search…"
-            inputProps={{ 'aria-label': 'search' }}
-          />
-        </Search>
-      )}
-    </Box>
-
-     </Toolbar>
+        <Box>
+          <Search />
+        </Box>
+)}
+    </Toolbar>
   );
 }
 
@@ -296,7 +235,7 @@ export default function EnhancedTable() {
   const [orderBy, setOrderBy] = React.useState('calories');
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
-  const [dense, setDense] = React.useState(false);
+ // const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   const handleRequestSort = (event, property) => {
@@ -343,9 +282,9 @@ export default function EnhancedTable() {
     setPage(0);
   };
 
-  const handleChangeDense = (event) => {
-    setDense(event.target.checked);
-  };
+  // const handleChangeDense = (event) => {
+  //   setDense(event.target.checked);
+  // };
 
   const isSelected = (name) => selected.indexOf(name) !== -1;
 
@@ -370,7 +309,8 @@ export default function EnhancedTable() {
           <Table
             sx={{ minWidth: 750 }}
             aria-labelledby="tableTitle"
-            size={dense ? 'small' : 'medium'}
+           // size={dense ? 'small' : 'medium'}
+           size='small'
           >
             <EnhancedTableHead
               numSelected={selected.length}
@@ -417,14 +357,15 @@ export default function EnhancedTable() {
                     <TableCell align="left">{row.fat}</TableCell>
                     <TableCell align="left">{row.carbs}</TableCell>
                     <TableCell align="left">{row.protein}</TableCell>
-                    <ActionMenu />
+                    <ActionMenu align="left"/>
                   </TableRow>
                 );
               })}
               {emptyRows > 0 && (
                 <TableRow
                   style={{
-                    height: (dense ? 33 : 53) * emptyRows,
+                   // height: (dense ? 33 : 53) * emptyRows,
+                   height: 33 * emptyRows
                   }}
                 >
                   <TableCell colSpan={6} />
@@ -441,7 +382,6 @@ export default function EnhancedTable() {
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
-          ActionsComponent={PaginationRounded}
         />
       </Paper>
       {/* <FormControlLabel
