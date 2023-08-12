@@ -23,6 +23,10 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import Search from 'layout/MainLayout/Header/HeaderContent/Search';
 import ActionMenu from 'components/buttons/ActionButton';
+import EditButton from 'components/buttons/EditButton';
+import DeleteButton from 'components/buttons/DeleteButton';
+import PaginationRounded from 'components/pagination/pagination';
+
 
 function createData(name, calories, fat, carbs, protein) {
   return {
@@ -218,7 +222,7 @@ function EnhancedTableToolbar(props) {
           </IconButton>
         </Tooltip>
       ) : (
-        <Box>
+        <Box sx={{mr: 0.5}}>
           <Search />
         </Box>
 )}
@@ -357,7 +361,14 @@ export default function EnhancedTable() {
                     <TableCell align="left">{row.fat}</TableCell>
                     <TableCell align="left">{row.carbs}</TableCell>
                     <TableCell align="left">{row.protein}</TableCell>
-                    <ActionMenu align="left"/>
+                    <TableCell align="left">
+                      <Toolbar>
+                        <EditButton />
+                        <ActionMenu />
+                        <DeleteButton />
+                    </Toolbar>
+
+                    </TableCell>
                   </TableRow>
                 );
               })}
@@ -374,6 +385,7 @@ export default function EnhancedTable() {
             </TableBody>
           </Table>
         </TableContainer>
+        <Box>
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
@@ -382,7 +394,10 @@ export default function EnhancedTable() {
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
+          ActionsComponent={PaginationRounded}
         />
+
+        </Box>
       </Paper>
       {/* <FormControlLabel
         control={<Switch checked={dense} onChange={handleChangeDense} />}
