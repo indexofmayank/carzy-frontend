@@ -1,15 +1,15 @@
-import './App.scss';
-import FormLayout from './formlayout/FormLayout';
-import HeadersLayout from './header/headerLayout';
-import Login from './login/Login';
+// project import
+import Routes from 'routes';
+import ThemeCustomization from 'themes';
+// import ScrollTop from 'components/ScrollTop';
 
-function App() {
-  return (
-    <div className="abn_car_main_container">
-      <HeadersLayout />
-      {/* <Login/> */}
-    </div>
-  );
-}
+// ==============================|| APP - THEME, ROUTER, LOCAL  ||============================== //
 
+const App = () => (
+  <ThemeCustomization>
+    {/* <ScrollTop> */}
+    <Routes />
+    {/* </ScrollTop> */}
+  </ThemeCustomization>
+);
 export default App;
