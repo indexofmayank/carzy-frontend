@@ -219,7 +219,7 @@ function EnhancedTableToolbar(props) {
           </IconButton>
         </Tooltip>
       ) : (
-        <Box sx={{ mr: 0.5 }}>
+        <Box sx={{ mr: 0.8 }}>
           <Search />
         </Box>
       )}
