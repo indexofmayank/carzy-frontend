@@ -16,10 +16,7 @@ import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Switch from '@mui/material/Switch';
 import DeleteIcon from '@mui/icons-material/Delete';
-import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import Search from 'layout/MainLayout/Header/HeaderContent/Search';
 import ActionMenu from 'components/buttons/ActionButton';
@@ -222,10 +219,10 @@ function EnhancedTableToolbar(props) {
           </IconButton>
         </Tooltip>
       ) : (
-        <Box sx={{mr: 0.5}}>
+        <Box sx={{ mr: 0.5 }}>
           <Search />
         </Box>
-)}
+      )}
     </Toolbar>
   );
 }
@@ -234,12 +231,13 @@ EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
 };
 
+
 export default function EnhancedTable() {
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('calories');
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
- // const [dense, setDense] = React.useState(false);
+  // const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   const handleRequestSort = (event, property) => {
@@ -313,8 +311,8 @@ export default function EnhancedTable() {
           <Table
             sx={{ minWidth: 750 }}
             aria-labelledby="tableTitle"
-           // size={dense ? 'small' : 'medium'}
-           size='small'
+            // size={dense ? 'small' : 'medium'}
+            size='small'
           >
             <EnhancedTableHead
               numSelected={selected.length}
@@ -338,7 +336,9 @@ export default function EnhancedTable() {
                     tabIndex={-1}
                     key={row.name}
                     selected={isItemSelected}
-                    sx={{ cursor: 'pointer' }}
+                    sx={{ 
+                      cursor: 'pointer',
+                     }}
                   >
                     <TableCell padding="checkbox">
                       <Checkbox
@@ -362,12 +362,14 @@ export default function EnhancedTable() {
                     <TableCell align="left">{row.carbs}</TableCell>
                     <TableCell align="left">{row.protein}</TableCell>
                     <TableCell align="left">
-                      <Toolbar>
-                        <EditButton />
-                        <ActionMenu />
+                        <div style={{
+                          display: 'flex',
+                          flexDirection: 'row',
+                        }}>
+                       <EditButton />
                         <DeleteButton />
-                    </Toolbar>
-
+                        <ActionMenu />
+                        </div>
                     </TableCell>
                   </TableRow>
                 );
@@ -375,8 +377,8 @@ export default function EnhancedTable() {
               {emptyRows > 0 && (
                 <TableRow
                   style={{
-                   // height: (dense ? 33 : 53) * emptyRows,
-                   height: 33 * emptyRows
+                    // height: (dense ? 33 : 53) * emptyRows,
+                    height: 33 * emptyRows
                   }}
                 >
                   <TableCell colSpan={6} />
@@ -386,16 +388,16 @@ export default function EnhancedTable() {
           </Table>
         </TableContainer>
         <Box>
-        <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
-          component="div"
-          count={rows.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-          ActionsComponent={PaginationRounded}
-        />
+          <TablePagination
+            rowsPerPageOptions={[5, 10, 25]}
+            component="div"
+            count={rows.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+            ActionsComponent={PaginationRounded}
+          />
 
         </Box>
       </Paper>
