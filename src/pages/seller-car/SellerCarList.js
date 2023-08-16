@@ -23,6 +23,7 @@ import ActionMenu from 'components/buttons/ActionButton';
 import EditButton from 'components/buttons/EditButton';
 import DeleteButton from 'components/buttons/DeleteButton';
 import PaginationRounded from 'components/pagination/pagination';
+import { Divider } from '../../../node_modules/@mui/material/index';
 
 
 function createData(name, calories, fat, carbs, protein) {
