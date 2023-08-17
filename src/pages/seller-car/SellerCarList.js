@@ -18,13 +18,11 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { visuallyHidden } from '@mui/utils';
-import Search from 'layout/MainLayout/Header/HeaderContent/Search';
+import  Search from 'layout/MainLayout/Header/HeaderContent/Search';
 import ActionMenu from 'components/buttons/ActionButton';
 import EditButton from 'components/buttons/EditButton';
 import DeleteButton from 'components/buttons/DeleteButton';
 import PaginationRounded from 'components/pagination/pagination';
-import { Divider } from '../../../node_modules/@mui/material/index';
-
 
 function createData(name, calories, fat, carbs, protein) {
   return {
@@ -88,7 +86,7 @@ const headCells = [
   {
     id: 'name',
     numeric: false,
-    disablePadding: true,
+    disablePadding: false,
     label: 'Dessert (100g serving)',
   },
   {
@@ -112,13 +110,13 @@ const headCells = [
   {
     id: 'protein',
     numeric: false,
-    disablePadding: false,
+    disablePadding: true,
     label: 'Protein (g)',
   },
   {
     id: 'action',
     numeric: false,
-    disablePadding: true,
+    disablePadding: false,
     label: 'Action'
   }
 ];

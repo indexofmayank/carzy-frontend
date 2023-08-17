@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-
+import 
 // material-ui
 import { useTheme } from '@mui/material/styles';
 import { AppBar, IconButton, Toolbar, useMediaQuery } from '@mui/material';
@@ -7,9 +7,12 @@ import { AppBar, IconButton, Toolbar, useMediaQuery } from '@mui/material';
 // project import
 import AppBarStyled from './AppBarStyled';
 import HeaderContent from './HeaderContent';
+import {default as Notification} from './HeaderContent/Notification';
+import {default as Profile} from './HeaderContent/Profile';
 
 // assets
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
+import { Stack } from '../../../../node_modules/@mui/material/index';
 
 // ==============================|| MAIN LAYOUT - HEADER ||============================== //
 
@@ -24,6 +27,7 @@ const Header = ({ open, handleDrawerToggle }) => {
   const mainHeader = (
     <Toolbar sx={{
       display: 'flex',
+      flexDirection: 'row',
       justifyContent: 'space-between'
     }}>
       <IconButton 
@@ -36,9 +40,11 @@ const Header = ({ open, handleDrawerToggle }) => {
       >
         {!open ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
         </IconButton>
-      <Toolbar>
-      <HeaderContent />
-      </Toolbar>
+      <div
+      >
+      <Notification />
+      <Profile />
+      </div>
     </Toolbar>
   );
 

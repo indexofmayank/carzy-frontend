@@ -9,6 +9,7 @@ import Divider from '@mui/material/Divider';
 import ArchiveIcon from '@mui/icons-material/Archive';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import Tooltip from '@mui/material/Tooltip';
 
 
 const StyledMenu = styled((props) => (
@@ -72,7 +73,9 @@ export default function ActionButton() {
       aria-expanded={open ? 'true' : undefined}
       variant="contained"
     >
+      <Tooltip title="More">
       <MoreOutlined />
+      </Tooltip>
       <StyledMenu
         id="demo-customized-menu"
         MenuListProps={{

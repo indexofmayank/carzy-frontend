@@ -13,12 +13,12 @@ const HeaderContent = () => {
   const matchesXs = useMediaQuery((theme) => theme.breakpoints.down('md'));
 
   return (
-  <>
-   <Notification />
+    <>
+      <Notification />
       {!matchesXs && <Profile />}
       {matchesXs && <MobileSection />}
-  </>  
-    
+
+    </>
   );
 };
 
