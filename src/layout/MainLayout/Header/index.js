@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-import 
+
+
 // material-ui
 import { useTheme } from '@mui/material/styles';
 import { AppBar, IconButton, Toolbar, useMediaQuery } from '@mui/material';
@@ -12,7 +13,7 @@ import {default as Profile} from './HeaderContent/Profile';
 
 // assets
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
-import { Stack } from '../../../../node_modules/@mui/material/index';
+import { Box, Stack } from '../../../../node_modules/@mui/material/index';
 
 // ==============================|| MAIN LAYOUT - HEADER ||============================== //
 
@@ -40,11 +41,16 @@ const Header = ({ open, handleDrawerToggle }) => {
       >
         {!open ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
         </IconButton>
-      <div
-      >
+    <Box flexItem
+    sx={{
+      display: 'inline-flex',
+      flexDirection: 'row',
+      justifyContent: 'row'
+    }}
+    >
       <Notification />
       <Profile />
-      </div>
+    </Box>
     </Toolbar>
   );
 

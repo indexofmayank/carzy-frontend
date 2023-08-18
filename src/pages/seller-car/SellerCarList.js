@@ -18,7 +18,7 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { visuallyHidden } from '@mui/utils';
-import  Search from 'layout/MainLayout/Header/HeaderContent/Search';
+import  {Search} from 'layout/MainLayout/Header/HeaderContent/Search';
 import ActionMenu from 'components/buttons/ActionButton';
 import EditButton from 'components/buttons/EditButton';
 import DeleteButton from 'components/buttons/DeleteButton';
@@ -116,7 +116,7 @@ const headCells = [
   {
     id: 'action',
     numeric: false,
-    disablePadding: false,
+    disablePadding: true, 
     label: 'Action'
   }
 ];
@@ -149,6 +149,8 @@ function EnhancedTableHead(props) {
             padding={headCell.disablePadding ? 'none' : 'normal'}
             sortDirection={orderBy === headCell.id ? order : false}
           >
+
+              
             <TableSortLabel
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : 'asc'}
@@ -360,15 +362,12 @@ export default function EnhancedTable() {
                     <TableCell align="left">{row.fat}</TableCell>
                     <TableCell align="left">{row.carbs}</TableCell>
                     <TableCell align="left">{row.protein}</TableCell>
-                    <TableCell align="left">
-                        <div style={{
-                          display: 'flex',
-                          flexDirection: 'row',
-                        }}>
+                    <TableCell align="left" display='inlineflex' flexDirection='row' sx={{
+                      margin: 0
+                    }}>
                        <EditButton />
                         <DeleteButton />
                         <ActionMenu />
-                        </div>
                     </TableCell>
                   </TableRow>
                 );
