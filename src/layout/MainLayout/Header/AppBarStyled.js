@@ -8,8 +8,6 @@ import { drawerWidth } from 'config';
 // ==============================|| HEADER - APP BAR STYLED ||============================== //
 
 const AppBarStyled = styled(AppBar, { shouldForwardProp: (prop) => prop !== 'open' })(({ theme, open }) => ({
-  // display: 'flex',
-  // flexDirection: 'row-reverse',
   zIndex: theme.zIndex.drawer + 1,
   transition: theme.transitions.create(['width', 'margin'], {
     easing: theme.transitions.easing.sharp,

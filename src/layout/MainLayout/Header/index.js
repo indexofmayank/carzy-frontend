@@ -29,7 +29,8 @@ const Header = ({ open, handleDrawerToggle }) => {
     <Toolbar sx={{
       display: 'flex',
       flexDirection: 'row',
-      justifyContent: 'space-between'
+      justifyContent: 'space-between',
+      alignItems: 'center'
     }}>
       <IconButton 
          disableRipple
@@ -41,15 +42,14 @@ const Header = ({ open, handleDrawerToggle }) => {
       >
         {!open ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
         </IconButton>
-    <Box flexItem
+    <Box 
     sx={{
-      display: 'inline-flex',
-      flexDirection: 'row',
-      justifyContent: 'row'
+      display: 'flex',
+      alignItems: 'center'
     }}
     >
-      <Notification />
-      <Profile />
+      <Notification flexItem />
+      <Profile flexItem />
     </Box>
     </Toolbar>
   );

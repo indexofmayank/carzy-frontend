@@ -35,18 +35,55 @@ function createData(name, calories, fat, carbs, protein) {
 }
 
 const rows = [
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Donut', 452, 25.0, 51, 4.9),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-  createData('Honeycomb', 408, 3.2, 87, 6.5),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Jelly Bean', 375, 0.0, 94, 0.0),
-  createData('KitKat', 518, 26.0, 65, 7.0),
-  createData('Lollipop', 392, 0.2, 98, 0.0),
-  createData('Marshmallow', 318, 0, 81, 2.0),
-  createData('Nougat', 360, 19.0, 9, 37.0),
+    createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
+  createData('Oreo', 437, 18.0, 63, 4.0),
   createData('Oreo', 437, 18.0, 63, 4.0),
 ];
 
@@ -118,6 +155,8 @@ const headCells = [
     numeric: false,
     disablePadding: true, 
     label: 'Action'
+
+
   }
 ];
 
@@ -149,7 +188,6 @@ function EnhancedTableHead(props) {
             padding={headCell.disablePadding ? 'none' : 'normal'}
             sortDirection={orderBy === headCell.id ? order : false}
           >
-
               
             <TableSortLabel
               active={orderBy === headCell.id}
@@ -221,7 +259,7 @@ function EnhancedTableToolbar(props) {
         </Tooltip>
       ) : (
         <Box sx={{ mr: 0.8 }}>
-          <Search />
+         <Search />
         </Box>
       )}
     </Toolbar>
@@ -304,6 +342,11 @@ export default function EnhancedTable() {
     [order, orderBy, page, rowsPerPage],
   );
 
+  const verticalDividerStyle = {
+    borderRight: '1px solid rgba(0, 0, 0, 0.12)',
+    height: '100%',
+  };
+
   return (
     <Box sx={{ width: '100%' }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
@@ -362,12 +405,16 @@ export default function EnhancedTable() {
                     <TableCell align="left">{row.fat}</TableCell>
                     <TableCell align="left">{row.carbs}</TableCell>
                     <TableCell align="left">{row.protein}</TableCell>
-                    <TableCell align="left" display='inlineflex' flexDirection='row' sx={{
-                      margin: 0
+                    <TableCell align="left" sx={{
+                      width: '90px',
                     }}>
-                       <EditButton />
-                        <DeleteButton />
-                        <ActionMenu />
+                      <Box sx={{
+                        display: 'inline-flex',
+                      }}>
+                      <EditButton />
+                      <DeleteButton />
+                      <ActionMenu />                        
+                      </Box>
                     </TableCell>
                   </TableRow>
                 );

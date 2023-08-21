@@ -29,8 +29,8 @@ import { BellOutlined, CloseOutlined, GiftOutlined, MessageOutlined, SettingOutl
 
 // sx styles
 const avatarSX = {
-  width: 36,
-  height: 36,
+  width: '40px',
+  height: '40px',
   fontSize: '1rem'
 };
 
@@ -67,7 +67,7 @@ const Notification = () => {
   const iconBackColor = 'grey.100';
 
   return (
-    <Box sx={{ flexShrink: 0, ml: 0.75 }}>
+    <Box sx={{ flexShrink: 0 }}>
       <IconButton
         disableRipple
         color="secondary"
@@ -145,7 +145,7 @@ const Notification = () => {
                           }}
                         >
                           <GiftOutlined />
-                        </Avatar>
+                          </Avatar>
                       </ListItemAvatar>
                       <ListItemText
                         primary={
