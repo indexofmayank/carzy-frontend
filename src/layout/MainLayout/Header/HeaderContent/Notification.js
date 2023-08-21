@@ -29,8 +29,8 @@ import { BellOutlined, CloseOutlined, GiftOutlined, MessageOutlined, SettingOutl
 
 // sx styles
 const avatarSX = {
-  width: '40px',
-  height: '40px',
+  width: '36px',
+  height: '36px',
   fontSize: '1rem'
 };
 
