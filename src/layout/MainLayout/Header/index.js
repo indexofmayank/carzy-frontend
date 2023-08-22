@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 
+
 // material-ui
 import { useTheme } from '@mui/material/styles';
 import { AppBar, IconButton, Toolbar, useMediaQuery } from '@mui/material';
@@ -7,9 +8,12 @@ import { AppBar, IconButton, Toolbar, useMediaQuery } from '@mui/material';
 // project import
 import AppBarStyled from './AppBarStyled';
 import HeaderContent from './HeaderContent';
+import {default as Notification} from './HeaderContent/Notification';
+import {default as Profile} from './HeaderContent/Profile';
 
 // assets
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
+import { Box, Stack } from '../../../../node_modules/@mui/material/index';
 
 // ==============================|| MAIN LAYOUT - HEADER ||============================== //
 
@@ -22,18 +26,31 @@ const Header = ({ open, handleDrawerToggle }) => {
 
   // common header
   const mainHeader = (
-    <Toolbar>
-      <IconButton
-        disableRipple
-        aria-label="open drawer"
-        onClick={handleDrawerToggle}
-        edge="start"
-        color="secondary"
-        sx={{ color: 'text.primary', bgcolor: open ? iconBackColorOpen : iconBackColor, ml: { xs: 0, lg: -2 } }}
+    <Toolbar sx={{
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center'
+    }}>
+      <IconButton 
+         disableRipple
+         aria-label="open drawer"
+         onClick={handleDrawerToggle}
+         edge="start"
+         color="secondary"
+         sx={{ color: 'text.primary', bgcolor: open ? iconBackColorOpen : iconBackColor, ml: { xs: 0, lg: -2 } }}
       >
         {!open ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-      </IconButton>
-      <HeaderContent />
+        </IconButton>
+    <Box 
+    sx={{
+      display: 'flex',
+      alignItems: 'center'
+    }}
+    >
+      <Notification flexItem />
+      <Profile flexItem />
+    </Box>
     </Toolbar>
   );
 

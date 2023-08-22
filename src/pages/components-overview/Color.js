@@ -5,7 +5,8 @@ import { Box, Card, Grid, Stack, Typography } from '@mui/material';
 
 // project import
 import MainCard from 'components/MainCard';
-import ComponentSkeleton from './ComponentSkeleton';
+import {default as ComponentSkeleton}
+ from './ComponentSkeleton';
 
 // ===============================|| COLOR BOX ||=============================== //
 

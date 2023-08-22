@@ -1,6 +1,7 @@
 import * as React from 'react';
+import {MoreOutlined} from '@ant-design/icons';
+import IconButton from '@mui/material/IconButton';
 import { styled, alpha } from '@mui/material/styles';
-import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import EditIcon from '@mui/icons-material/Edit';
@@ -8,7 +9,8 @@ import Divider from '@mui/material/Divider';
 import ArchiveIcon from '@mui/icons-material/Archive';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import Tooltip from '@mui/material/Tooltip';
+
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -51,7 +53,9 @@ const StyledMenu = styled((props) => (
   },
 }));
 
-export default function ActionMenu() {
+
+export default function ActionButton() {
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -59,22 +63,19 @@ export default function ActionMenu() {
   };
   const handleClose = () => {
     setAnchorEl(null);
-  };
+  }
 
   return (
-    <div>
-      <Button
-        id="demo-customized-button"
-        aria-controls={open ? 'demo-customized-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        variant="contained"
-        disableElevation
-        onClick={handleClick}
-        endIcon={<KeyboardArrowDownIcon />}
-      >
-        Options
-      </Button>
+    <IconButton
+      onClick={handleClick}
+      aria-controls={open ? 'demo-customized-menu' : undefined}
+      aria-haspopup="true"
+      aria-expanded={open ? 'true' : undefined}
+      variant="contained"
+    >
+      <Tooltip title="More">
+      <MoreOutlined />
+      </Tooltip>
       <StyledMenu
         id="demo-customized-menu"
         MenuListProps={{
@@ -102,6 +103,6 @@ export default function ActionMenu() {
           More
         </MenuItem>
       </StyledMenu>
-    </div>
-  );
+    </IconButton>
+  )
 }
