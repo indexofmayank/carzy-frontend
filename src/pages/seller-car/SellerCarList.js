@@ -35,7 +35,7 @@ function createData(name, calories, fat, carbs, protein) {
   };
 }
 
-const data = [
+const rows = [
   createData('Cupcake', 305, 3.7, 67, 4.3),
   createData('Donut', 452, 25.0, 51, 4.9),
   createData('Eclair', 262, 16.0, 24, 6.0),
@@ -242,15 +242,8 @@ export default function EnhancedTable() {
   const [page, setPage] = React.useState(0);
   // const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  const [isLoading, setIsLoading] = React.useState(true); //loading is false here.
-  const [rows, setRows] = React.useState([]);
 
-  React.useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-      setRows(data)
-    }, 1000);
-  })
+
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -321,12 +314,7 @@ export default function EnhancedTable() {
   };
 
   return (
-    <>
-    {
-      isLoading ? (
-        <TableSkeleton rows={5} columns={4} />
-      ) : (
-        <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%' }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
         <EnhancedTableToolbar numSelected={selected.length} />
         <TableContainer>
@@ -429,8 +417,5 @@ export default function EnhancedTable() {
         label="Dense padding"
       /> */}
     </Box>
-      )
-    }
-    </>
   );
 }
